@@ -69,28 +69,62 @@ import random
 # CONTINUE é uma função que mantem o laço de repetição somente pulando para o proximo loop
 # Utilizando a biblioteca "random" para gerar o numero secreto com a função .randrange
 
+# print(34*"'")
+# print("|  Welcome to the Guessing Game  | ")
+# print(34*"'")
+
+# Criando e selecionando o numero secreto de forma randomica com a lib "random" e a função .random()
+# .random() cria numeros de 0.0 a 1.0
+# secret_number = round(random.random() * 50)
+
+# Criando e selecionando o numero secreto de forma randomica
+# secret_number = random.randrange(1, 51)
+#
+# total_try = 5
+#
+# print("What is the secret number?")
+#
+# for turn in range(1, total_try + 1):
+#     print(f"Round {turn} of {total_try} rounds")
+#     shot_str = input("Choose a number between 1 and 50?")
+#     shot = int(shot_str)
+#     if(shot < 1 or shot > 50):
+#         print("Invalid, you must to choose a number between 1 and 50. Unfurtunately you lost a choice")
+#         continue
+#     if(shot == secret_number):
+#         print("Amazing! You got it right")
+#         break
+#     else:
+#             if(shot > secret_number and turn < 5):
+#                 print("Too bad, but you were wrong. The secret number is smaller.")
+#             elif(shot < secret_number and turn < 5):
+#                 print("Too bad, but you were wrong. The secret number is bigger.")
+#             elif(shot > secret_number or shot < secret_number and total_try >= 5):
+#                 print("Sorry, but you were wrong. The game is over.")
+
+
+# 5 - Criando jogo com level de dificuldade onde o jogador for avançando vai reduzindo o numero de tentativas
+# Implmentado sistema de loop para os leveis e incluido os rounds de tentativas por dificuldade
+
+
 print(34*"'")
 print("|  Welcome to the Guessing Game  | ")
 print(34*"'")
 
 print("What is the secret number?")
 
-# Criando e selecionando o numero secreto de forma randomica com a lib "random" e a função .random()
-# .random() cria numeros de 0.0 a 1.0
-# secret_number = round(random.random() * 50)
-
 # Criando e selecionando o numero secreto de forma randomica usando a lib "random" e a função .randrange()
 secret_number = random.randrange(1, 51)
+print(secret_number)
 
+# Variaveis de loop
 max_level = 3
+
 easy_max_turn = 5
 medium_max_turn = 4
 hard_max_turn = 3
-level = 1
 
-invalid_shot = ""
-right_shot = ""
-wrong_shot = ""
+level = 1
 
 for level in range(1, max_level + 1):
     if (level == 1):
@@ -120,40 +154,43 @@ for level in range(1, max_level + 1):
         level = "Medium"
         if (level == "Medium"):
             print(f"The player is in the {level} level")
-            for turn in range(1, medium_max_turn + 1):
-                print(f"Round {turn} of {medium_max_turn} rounds")
-                shot_str = input("Choose a number between 1 and 50?")
-                shot = int(shot_str)
-                if (shot < 1 or shot > 50):
-                    print("Invalid, you must to choose a number between 1 and 50. Unfurtunately you lost a choice")
-                    continue
+        for turn in range(1, medium_max_turn + 1):
+            print(f"Round {turn} of {medium_max_turn} rounds")
+            shot_str = input("Choose a number between 1 and 50?")
+            shot = int(shot_str)
+            if (shot < 1 or shot > 50):
+                print("Invalid, you must to choose a number between 1 and 50. Unfurtunately you lost a choice")
+                continue
+            if(shot == secret_number):
+                print("Amazing! You got it right!")
+                break
+            elif (shot > secret_number and turn < 5):
+                print("Too bad, but you were wrong. The secret number is smaller.")
+            elif (shot < secret_number and turn < 5):
+                print("Too bad, but you were wrong. The secret number is bigger.")
+        if(shot > secret_number or shot < secret_number and medium_max_turn >= 4):
+                print(f"Sorry, but you were wrong. The secret number was {secret_number}. The game is over.")
+                break
+        else:
+            continue
+    elif(level == 3):
+        level = "Hard"
+        if (level == "Hard"):
+            print(f"The player is in the {level} level")
+        for turn in range(1, hard_max_turn + 1):
+            print(f"Round {turn} of {hard_max_turn} rounds")
+            shot_str = input("Choose a number between 1 and 50?")
+            shot = int(shot_str)
+            if (shot == shot < 1 or shot > 50):
+                print("Invalid, you must to choose a number between 1 and 50. Unfurtunately you lost a choice")
+                continue
+            if (shot == secret_number):
+                print("Amazing! You got it right!")
+                break
+            else:
                 if (shot > secret_number and turn < 5):
                     print("Too bad, but you were wrong. The secret number is smaller.")
                 elif (shot < secret_number and turn < 5):
                     print("Too bad, but you were wrong. The secret number is bigger.")
-                elif (shot > secret_number or shot < secret_number and medium_max_turn >= 5):
-                    print(f"Sorry, but you were wrong. The secret number was {secret_number}. The game is over.")
-                    break
-                elif (shot == secret_number):
-                    print("Amazing! You got it right!")
-                    break
-    else:
-        level = "Hard"
-        if (level == "Hard"):
-            for turn in range(1, hard_max_turn + 1):
-                print(f"Round {turn} of {hard_max_turn} rounds")
-                shot_str = input("Choose a number between 1 and 50?")
-                shot = int(shot_str)
-                if (invalid_shot == shot < 1 or shot > 50):
-                    print("Invalid, you must to choose a number between 1 and 50. Unfurtunately you lost a choice")
-                    continue
-                if (right_shot == secret_number):
-                    print("Amazing! You got it right!")
-                    break
-                else:
-                    if (shot > secret_number and turn < 5):
-                        print("Too bad, but you were wrong. The secret number is smaller.")
-                    elif (shot < secret_number and turn < 5):
-                        print("Too bad, but you were wrong. The secret number is bigger.")
-                    elif (wrong_shot == shot > secret_number or shot < secret_number and hard_max_turn >= 5):
-                        print(f"Sorry, but you were wrong. The secret number was {secret_number}. The game is over.")
+        if (shot == shot > secret_number or shot < secret_number and hard_max_turn >= 3):
+                print(f"Sorry, but you were wrong. The secret number was {secret_number}. The game is over.")
