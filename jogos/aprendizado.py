@@ -110,7 +110,7 @@ import random
 
 print("*********************************")
 print("Welcome to the Guessing Game!")
-print("*********************************")
+print("*********************************","\n")
 
 secret_number = random.randrange(1,101)
 total_try = 0
