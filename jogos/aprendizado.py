@@ -110,9 +110,9 @@ import random
 
 print("*********************************")
 print("Welcome to the Guessing Game!")
-print("*********************************","\n")
+print("*********************************")
 
-secret_number = random.randrange(1,101)
+secret_number = random.randrange(1, 101)
 total_try = 0
 points = 1000
 
@@ -132,7 +132,7 @@ for turn in range(1, total_try + 1):
     print("Tentativa {} de {}".format(turn, total_try))
 
     shot_str = input("Digite um número entre 1 e 100: ")
-    print("Você digitou " , shot_str)
+    print("Você digitou ", shot_str)
     shot = int(shot_str)
 
     if(shot < 1 or shot > 100):
@@ -140,8 +140,8 @@ for turn in range(1, total_try + 1):
         continue
 
     right = shot == secret_number
-    bigger   = shot > secret_number
-    smaller   = shot < secret_number
+    bigger = shot > secret_number
+    smaller = shot < secret_number
 
     if(right):
         print("Você acertou e fez {} pontos!".format(points))
@@ -156,7 +156,12 @@ for turn in range(1, total_try + 1):
 
 print("Fim do jogo")
 
+# 6 - Para declarar uma função, devemos usar a palavra chave def
+# todo o código identado faz parte da função
 
+#   def nome_da_funcao():
+#   print("aprendendo funções")
 
-
-
+# Uma função também pode receber parâmetros e retornar algum valor
+# def soma(a, b):
+#     return a + b
