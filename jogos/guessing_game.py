@@ -8,9 +8,9 @@ def play():
 
     # Variaveis de loop
     max_level = 3
-    easy_max_turn = 7
-    medium_max_turn = 5
-    hard_max_turn = 3
+    easy_max_turn = 10
+    medium_max_turn = 7
+    hard_max_turn = 5
 
     # Variaveis de pontuação
     easy_points = 35
@@ -55,11 +55,11 @@ def play():
                     total_points = easy_points + bonus
                     print(f"Amazing! You got it right! You have {total_points} points. You are going to the next level", "\n", "\n")
                     break
-                elif (shot > secret_number and turn < 7):
+                elif (shot > secret_number and turn < 10):
                     print("Too bad, but you were wrong. The secret number is smaller.", "\n")
-                elif (shot < secret_number and turn < 7):
+                elif (shot < secret_number and turn < 10):
                     print("Too bad, but you were wrong. The secret number is bigger.", "\n")
-            if(shot > secret_number or shot < secret_number and easy_max_turn >= 7):
+            if(shot > secret_number or shot < secret_number and easy_max_turn >= 10):
                 print(f"Sorry, but you were wrong. The secret number was {secret_number}. The game is over.", "\n")
                 break
             else:
@@ -92,11 +92,11 @@ def play():
                     total_points = easy_points + medium_points + (2 * bonus)
                     print(f"Amazing! You got it right! You have {total_points} points. You are going to the next level", "\n", "\n")
                     break
-                elif (shot > secret_number and turn < 5):
+                elif (shot > secret_number and turn < 7):
                     print("Too bad, but you were wrong. The secret number is smaller.", "\n")
-                elif (shot < secret_number and turn < 5):
+                elif (shot < secret_number and turn < 7):
                     print("Too bad, but you were wrong. The secret number is bigger.", "\n")
-            if(shot > secret_number or shot < secret_number and medium_max_turn >= 5):
+            if(shot > secret_number or shot < secret_number and medium_max_turn >= 7):
                 print(f"Sorry, but you were wrong. The secret number was {secret_number}. You had {total_points}"
                       f" points. The game is over.", "\n")
                 break
@@ -126,11 +126,11 @@ def play():
                     total_points = easy_points + medium_points + hard_points + (3 * bonus)
                     print(f"Amazing! You got it right! You did {total_points} points. Congratulations!!!", "\n")
                     break
-                elif(shot > secret_number and turn < 3):
+                elif(shot > secret_number and turn < 5):
                     print("Too bad, but you were wrong. The secret number is smaller.", "\n")
-                elif (shot < secret_number and turn < 3):
+                elif (shot < secret_number and turn < 5):
                     print("Too bad, but you were wrong. The secret number is bigger.", "\n")
-            if (shot == shot > secret_number or shot < secret_number and hard_max_turn >= 3):
+            if (shot == shot > secret_number or shot < secret_number and hard_max_turn >= 5):
                 print(f"Sorry, but you were wrong. The secret number was {secret_number}. You had {total_points}"
                       f" points. The game is over.", "\n")
 

@@ -1,5 +1,5 @@
 import guessing_game
-import hangman_game
+import jogo_forca
 
 print(25*"*")
 print("*   Choose Your Game    * ")
