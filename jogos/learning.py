@@ -169,25 +169,48 @@
 
 # Python 3 parte 2: Avançando na linguagem
 
+# 1 - Criando um loop para verificação da letra
+# def play():
+#     print(25*"/")
+#     print("/   Jogo da Forca    / ")
+#     print(25*"/")
+#
+#     secret_country = "brasil"
+#     hanged = False
+#     escaped = False
+#
+#     while(not hanged and not escaped):
+#         print("jogando jogo da forca" "\n")
+#         print("Qual o pais? _ _ _ _ _ _")
+#         shot = input("digite uma letra: ")
+#         if(shot in secret_country):
+#             print(f"tem a letra {shot}, no pais")
+#         else:
+#             print(f"não tem a letra {shot}, no pais!")
+#
+#     print("Game Over")
+
+# 2 - encontrando letras dentro da string
+
 def play():
     print(25*"/")
-    print("/   The Hangman Game    / ")
+    print("/   Jogo da Forca    / ")
     print(25*"/")
 
-    secret_country = "brasil"
-    hanged = False
-    escaped = False
+    pais_secreto = "brasil"
+    enforcou = False
+    escapou = False
 
-    while(not hanged and not escaped):
-        print("Playing The Hangman Game" "\n")
-        print("What's the country? _ _ _ _ _ _")
-        shot = input("Type the country: ")
-        if(shot in secret_country):
-            print("Escaped")
-            break
-        else:
-            print("Hanged!")
-
+    while(not enforcou and not escapou):
+        print("Qual o pais? _ _ _ _ _ _")
+        chute = input("digite uma letra: ")
+        posicao = 0
+        for chute in pais_secreto:
+            if(chute == pais_secreto):
+                print(f"O país tem a letra {chute}, na posição {posicao}")
+            else:
+                print(f"não tem a letra {chute}, no pais!")
+            posicao = posicao + 1
     print("Game Over")
 
 if(__name__ == "__main__"):
