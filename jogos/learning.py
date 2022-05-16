@@ -191,27 +191,32 @@
 #     print("Game Over")
 
 # 2 - encontrando letras dentro da string
+# palavra = "aluracursos" / palavra.find("b"), o resultado será -1, pois quando a busca nada encontra sempre é -1
+# .casefold() faz tratamento de letras maiusculas em minusculas semelhante ao .lower(), removendo todas as distinçoes
+# função "strip" retira os espaços em brancos da string
 
 def play():
     print(25*"/")
     print("/   Jogo da Forca    / ")
     print(25*"/")
 
-    pais_secreto = "brasil"
+    pais_secreto = "banana"
     enforcou = False
     escapou = False
 
     while(not enforcou and not escapou):
+
         print("Qual o pais? _ _ _ _ _ _")
+
         chute = input("digite uma letra: ")
+        chute = chute.strip()
         posicao = 0
-        for chute in pais_secreto:
-            if(chute == pais_secreto):
-                print(f"O país tem a letra {chute}, na posição {posicao}")
-            else:
-                print(f"não tem a letra {chute}, no pais!")
+
+        for letra in pais_secreto:
+            if(chute.upper() == letra.upper()):
+                print(f"Encontrei a letra {chute}, na posição {posicao}")
             posicao = posicao + 1
-    print("Game Over")
+        print("Jogando...")
 
 if(__name__ == "__main__"):
     play()
