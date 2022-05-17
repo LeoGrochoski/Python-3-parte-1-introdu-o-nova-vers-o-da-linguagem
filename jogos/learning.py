@@ -200,23 +200,26 @@ def play():
     print("/   Jogo da Forca    / ")
     print(25*"/")
 
-    pais_secreto = "banana"
+    palavra_secreta = "banana"
+    letras_acertadas = ["_", "_", "_", "_", "_", "_"]
+
     enforcou = False
     escapou = False
 
     while(not enforcou and not escapou):
 
-        print("Qual o pais? _ _ _ _ _ _")
-
-        chute = input("digite uma letra: ")
+        chute = input("Qual a letra? ")
         chute = chute.strip()
-        posicao = 0
 
-        for letra in pais_secreto:
+        posicao = 0
+        for letra in palavra_secreta:
             if(chute.upper() == letra.upper()):
-                print(f"Encontrei a letra {chute}, na posição {posicao}")
+                letras_acertadas[posicao] = letra
             posicao = posicao + 1
-        print("Jogando...")
+
+        print(letras_acertadas)
+
+
 
 if(__name__ == "__main__"):
     play()
