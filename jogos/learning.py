@@ -109,7 +109,6 @@
 # Implmentado sistema de loop para os leveis e incluido os rounds de tentativas por dificuldade
 # Criando e selecionando o numero secreto de forma randomica usando a lib "random" e a função .randrange()
 
-
 # print("*********************************")
 # print("Welcome to the Guessing Game!")
 # print("*********************************")
@@ -167,9 +166,12 @@
 # def soma(a, b):
 #     return a + b
 
+# -------------------------------------- NOVO CURSO --------------------------------------------------------
+
 # Python 3 parte 2: Avançando na linguagem
 
 # 1 - Criando um loop para verificação da letra
+
 # def play():
 #     print(25*"/")
 #     print("/   Jogo da Forca    / ")
@@ -194,32 +196,118 @@
 # palavra = "aluracursos" / palavra.find("b"), o resultado será -1, pois quando a busca nada encontra sempre é -1
 # .casefold() faz tratamento de letras maiusculas em minusculas semelhante ao .lower(), removendo todas as distinçoes
 # função "strip" retira os espaços em brancos da string
+# função .index(), que nos retorna o índice da primeira ocorrência de um determinado elemento em uma lista
+# jeito fácil de contar o número de ocorrências de um determinado elemento em uma lista é a função .count()
 
-def play():
-    print(25*"/")
-    print("/   Jogo da Forca    / ")
-    print(25*"/")
+# def play():
+#     print(25*"/")
+#     print("/   Jogo da Forca    / ")
+#     print(25*"/")
+#
+#     palavra_secreta = "banana"
+#     letras_acertadas = ["_", "_", "_", "_", "_", "_"]
+#
+#     enforcou = False
+#     escapou = False
+#
+#     while(not enforcou and not escapou):
+#
+#         chute = input("Qual a letra? ")
+#         chute = chute.strip()
+#
+#         posicao = 0
+#         for letra in palavra_secreta:
+#             if(chute.upper() == letra.upper()):
+#                 letras_acertadas[posicao] = letra
+#             posicao = posicao + 1
+#
+#         print(letras_acertadas)
+#
+#
+#
+#
+# if(__name__ == "__main__"):
+#     play()
 
-    palavra_secreta = "banana"
-    letras_acertadas = ["_", "_", "_", "_", "_", "_"]
+# # 3 - Tuplas e Listas
+# # Podedmos alterar listas adicionando elementos utilizando a função: .append
+# # A função .pop deleta o ultimo elemento da lista
+# # Tupla é uma estrutura (lista) de dados imutavel, não podedmos alterar
+#
+# # Tupla com numeros que podem ser cordenadas de eixo x e y
+#
+# # Exemplo 1
+#
+# p1 = (3,5)
+# p2 = (3,6)
+# p3 = (5,7)
+# line = [p1, p2, p3]
+# print(line, "\n")
+#
+# # ---------------------------------------------------------------------------------------
+# # Exemplo 2
+#
+# # Tupla com nome que podem ser de instrutores,
+# # depois conseguimos chamar as tuplas pela lista de instrutores e sua posição
+#
+# p1 = ("Leo", 27)
+# p2 = ("Je", 26)
+# instrutores = [p1, p2]
+# print(instrutores, "\n")
+# print(instrutores[0])
+# print(instrutores[1])
+#
+# # também podemos acessar uma informação de forma unica selecionando a tupla e depois a variavel nome e idade por exemplo
+#
+# print(f" O instrutor {instrutores[0][0]} tem {instrutores[0][1]} anos")
+#
+# # ---------------------------------------------------------------------------------------
+#
+# # Converter uma lista em tupla
+#
+# # listas são criadas utilizando [] e pode ser editada
+# lista = []
+# lista.append("Leonardo")
+# lista.append("José")
+# lista.append("Maria")
+# lista.append("Rafaela")
+# print(lista)
+#
+# # Convertemos a lista em tupla utilizando a função built-in tuple, tuplas são definadas por ()
+#
+# nova_lista = tuple(lista)
+#
+# # A lista agora é uma tupla que é imutavel
+# print(nova_lista)
+#
+# # Para convertermos uma tupla em lista podemos utilizara função list
+#
+# outra_lista = list(nova_lista)
+# print(outra_lista)
 
-    enforcou = False
-    escapou = False
+# Evitando elementos duplicados em nossa sequencia, podemos utilizar o set
+# set = {11111, 00000, 10101}
 
-    while(not enforcou and not escapou):
+# Para adicionar um elemento a uma coleção set, deve-se utilizar o .add e não mais o .append, e se este elemento for
+# repetido ele não será adicionado
 
-        chute = input("Qual a letra? ")
-        chute = chute.strip()
+# Exemplo
+# coleção = {11111, 22222, 33333}
+# coleção.add(11111)
+# print(coleção)
+# print(coleção[0])
 
-        posicao = 0
-        for letra in palavra_secreta:
-            if(chute.upper() == letra.upper()):
-                letras_acertadas[posicao] = letra
-            posicao = posicao + 1
+# Conhecendo o dictionary
+# Se não conhecemos a localização de um elemento dentro da lista e precisamos de uma informação dentro dela,
+# pode-se utilizar o metodo de busca através do nome, só que isso não vai funcionar com lista
 
-        print(letras_acertadas)
+# Para criar um dicionário devemos inicializar os instrutores de um modo um pouco diferente
 
+# Exemplo
+# instrutores = {'Leonardo' : 27, 'João' : 32, 'Rafael' : 36}
 
+# No lado ésquerdo fica a chave e no lado direito o valor, é importante pois utiliza-se a chave para buscar o valor
 
-if(__name__ == "__main__"):
-    play()
+# Agora podemos buscar a informação
+
+#instrutores['Leonardo']
