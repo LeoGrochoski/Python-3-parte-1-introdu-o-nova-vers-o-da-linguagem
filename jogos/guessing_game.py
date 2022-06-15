@@ -1,3 +1,4 @@
+
 import random
 
 
@@ -19,7 +20,6 @@ def play():
     bonus = 15
     total_points = 0
 
-    print("Let's Play?", "\n")
     print("What is the secret number?", "\n")
 
     for level in range(1, max_level + 1):
@@ -59,7 +59,7 @@ def play():
                     print("Too bad, but you were wrong. The secret number is smaller.", "\n")
                 elif (shot < secret_number and turn < 10):
                     print("Too bad, but you were wrong. The secret number is bigger.", "\n")
-            if(shot > secret_number or shot < secret_number and easy_max_turn >= 10):
+            if(shot != secret_number and easy_max_turn >= 10):
                 print(f"Sorry, but you were wrong. The secret number was {secret_number}. The game is over.", "\n")
                 break
             else:
@@ -96,7 +96,7 @@ def play():
                     print("Too bad, but you were wrong. The secret number is smaller.", "\n")
                 elif (shot < secret_number and turn < 7):
                     print("Too bad, but you were wrong. The secret number is bigger.", "\n")
-            if(shot > secret_number or shot < secret_number and medium_max_turn >= 7):
+            if(shot != secret_number and medium_max_turn >= 7):
                 print(f"Sorry, but you were wrong. The secret number was {secret_number}. You had {total_points}"
                       f" points. The game is over.", "\n")
                 break
@@ -130,7 +130,7 @@ def play():
                     print("Too bad, but you were wrong. The secret number is smaller.", "\n")
                 elif (shot < secret_number and turn < 5):
                     print("Too bad, but you were wrong. The secret number is bigger.", "\n")
-            if (shot == shot > secret_number or shot < secret_number and hard_max_turn >= 5):
+            if (shot != shot > secret_number and hard_max_turn >= 5):
                 print(f"Sorry, but you were wrong. The secret number was {secret_number}. You had {total_points}"
                       f" points. The game is over.", "\n")
 

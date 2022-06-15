@@ -1,4 +1,4 @@
-# import random
+import random
 
 # Python 3 parte 1: Introdução à nova versão da linguagem
 
@@ -195,7 +195,7 @@
 # 2 - encontrando letras dentro da string
 # palavra = "aluracursos" / palavra.find("b"), o resultado será -1, pois quando a busca nada encontra sempre é -1
 # .casefold() faz tratamento de letras maiusculas em minusculas semelhante ao .lower(), removendo todas as distinçoes
-# função "strip" retira os espaços em brancos da string
+# função ".strip" retira os espaços em brancos da string
 # função .index(), que nos retorna o índice da primeira ocorrência de um determinado elemento em uma lista
 # jeito fácil de contar o número de ocorrências de um determinado elemento em uma lista é a função .count()
 
@@ -222,49 +222,46 @@
 #             posicao = posicao + 1
 #
 #         print(letras_acertadas)
-#
-#
-#
-#
+
 # if(__name__ == "__main__"):
 #     play()
 
-# # 3 - Tuplas e Listas
-# # Podedmos alterar listas adicionando elementos utilizando a função: .append
-# # A função .pop deleta o ultimo elemento da lista
-# # Tupla é uma estrutura (lista) de dados imutavel, não podedmos alterar
-#
-# # Tupla com numeros que podem ser cordenadas de eixo x e y
-#
-# # Exemplo 1
-#
+# 3 - Tuplas e Listas
+# Podedmos alterar listas adicionando elementos utilizando a função: .append
+# A função .pop deleta o ultimo elemento da lista
+# Tupla é uma estrutura (lista) de dados imutavel, não podedmos alterar
+
+# Tupla com numeros que podem ser cordenadas de eixo x e y
+
+# Exemplo 1
+
 # p1 = (3,5)
 # p2 = (3,6)
 # p3 = (5,7)
 # line = [p1, p2, p3]
 # print(line, "\n")
-#
+
 # # ---------------------------------------------------------------------------------------
 # # Exemplo 2
-#
+
 # # Tupla com nome que podem ser de instrutores,
 # # depois conseguimos chamar as tuplas pela lista de instrutores e sua posição
-#
+
 # p1 = ("Leo", 27)
 # p2 = ("Je", 26)
 # instrutores = [p1, p2]
 # print(instrutores, "\n")
 # print(instrutores[0])
 # print(instrutores[1])
-#
-# # também podemos acessar uma informação de forma unica selecionando a tupla e depois a variavel nome e idade por exemplo
-#
+
+# também podemos acessar uma informação de forma unica selecionando a tupla e depois a variavel nome e idade por exemplo
+
 # print(f" O instrutor {instrutores[0][0]} tem {instrutores[0][1]} anos")
-#
+
 # # ---------------------------------------------------------------------------------------
-#
+
 # # Converter uma lista em tupla
-#
+
 # # listas são criadas utilizando [] e pode ser editada
 # lista = []
 # lista.append("Leonardo")
@@ -310,4 +307,259 @@
 
 # Agora podemos buscar a informação
 
-#instrutores['Leonardo']
+# instrutores['Leonardo']
+
+# List Comprehension Desafio
+
+# inteiros = [1,3,4,5,7,8,9]
+# pares = []
+# for numero in inteiros:
+#     if numero % 2 == 0:
+#         pares.append(numero)
+#
+# inteiros = [1,3,4,5,7,8,9]
+# print(f"Está é a lista de numeros inteiros: {inteiros}")
+# pares = [num for num in inteiros if num % 2 == 0]
+# print(f"Está é a lista com apenas os numeros pares: {pares}")
+
+# 4 - Abrindo e escrevendo em arquivo
+
+# arquivo = open("frutas.txt", "w")
+# arquivo.write("melancia\n")
+# # /n junto com o que esta escrito serve para a quebra de linha dentro do arquivo
+# arquivo.close()
+# arquivo = open("frutas.txt", "a")
+# arquivo.write("mamão\n")
+# arquivo.close()
+# arquivo = open("frutas.txt", "a")
+# arquivo.write("maça\n")
+
+# Para ler somente uma linha do arquivo poded se utilizar a função .redline()
+# >>> arquivo = open("palavras.txt", "r")
+# >>> linha = arquivo.readline()
+# >>> linha
+# 'banana\n'
+
+# OBS: Para retirar o \n no fim da palavra, pode-se utilizar a função .strip()
+# A função strip() foi utilizada para tirar espaços em branco, mas também podemos usar para retirar caracteres especiais
+
+# 5 - Escolhendo palavra de um arquivo criado
+
+# def jogar():
+#     print("*********************************")
+#     print("***Bem vindo ao jogo da Forca!***")
+#     print("*********************************")
+#
+#
+#     arquivo = open("palavras.txt", "r")
+#     palavras = []
+#
+#     for linha in arquivo:
+#         linha = linha.strip()
+#         palavras.append(linha)
+#
+#     arquivo.close()
+#
+#     numero = random.randrange(0,len(palavras))
+#     palavra_secreta = palavras[numero].upper()
+#
+#     letras_acertadas = ["_" for letra in palavra_secreta]
+#
+#     enforcou = False
+#     acertou = False
+#     erros = 0
+#
+#     print(letras_acertadas)
+#
+#     while(not enforcou and not acertou):
+#
+#         chute = input("Qual letra? ")
+#         chute = chute.strip().upper()
+#
+#         if(chute in palavra_secreta):
+#             index = 0
+#             for letra in palavra_secreta:
+#                 if(chute == letra):
+#                     letras_acertadas[index] = letra
+#                 index += 1
+#         else:
+#             erros += 1
+#
+#         enforcou = erros == 6
+#         acertou = "_" not in letras_acertadas
+#         print(letras_acertadas)
+#
+#
+#     if(acertou):
+#         print("Você ganhou!!")
+#     else:
+#         print("Você perdeu!!")
+#     print("Fim do jogo")
+#
+# if(__name__ == "__main__"):
+#     jogar()
+
+# 6 - Código final apresentado pelo professor no curso
+#  Foi dividido o código em diversos blocos menores por função definos por "def" seguido do nome da função e ():
+
+def jogar():
+    imprime_mensagem_abertura()
+    palavra_secreta = carrega_palavra_secreta()
+
+    letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
+    print(letras_acertadas)
+
+    enforcou = False
+    acertou = False
+    erros = 0
+
+    while(not enforcou and not acertou):
+
+        chute = pede_chute()
+
+        if(chute in palavra_secreta):
+            marca_chute_correto(chute, letras_acertadas, palavra_secreta)
+        else:
+            erros += 1
+            desenha_forca(erros)
+
+        enforcou = erros == 7
+        acertou = "_" not in letras_acertadas
+
+        print(letras_acertadas)
+
+    if(acertou):
+        imprime_mensagem_vencedor()
+    else:
+        imprime_mensagem_perdedor(palavra_secreta)
+
+
+def desenha_forca(erros):
+    print("  _______     ")
+    print(" |/      |    ")
+
+    if(erros == 1):
+        print (" |      (_)   ")
+        print (" |            ")
+        print (" |            ")
+        print (" |            ")
+
+    if(erros == 2):
+        print (" |      (_)   ")
+        print (" |      \     ")
+        print (" |            ")
+        print (" |            ")
+
+    if(erros == 3):
+        print (" |      (_)   ")
+        print (" |      \|    ")
+        print (" |            ")
+        print (" |            ")
+
+    if(erros == 4):
+        print (" |      (_)   ")
+        print (" |      \|/   ")
+        print (" |            ")
+        print (" |            ")
+
+    if(erros == 5):
+        print (" |      (_)   ")
+        print (" |      \|/   ")
+        print (" |       |    ")
+        print (" |            ")
+
+    if(erros == 6):
+        print (" |      (_)   ")
+        print (" |      \|/   ")
+        print (" |       |    ")
+        print (" |      /     ")
+
+    if (erros == 7):
+        print (" |      (_)   ")
+        print (" |      \|/   ")
+        print (" |       |    ")
+        print (" |      / \   ")
+
+    print(" |            ")
+    print("_|___         ")
+    print()
+
+
+
+def imprime_mensagem_vencedor():
+    print("Parabéns, você ganhou!")
+    print("       ___________      ")
+    print("      '._==_==_=_.'     ")
+    print("      .-\\:      /-.    ")
+    print("     | (|:.     |) |    ")
+    print("      '-|:.     |-'     ")
+    print("        \\::.    /      ")
+    print("         '::. .'        ")
+    print("           ) (          ")
+    print("         _.' '._        ")
+    print("        '-------'       ")
+
+
+def imprime_mensagem_perdedor(palavra_secreta):
+    print("Puxa, você foi enforcado!")
+    print("A palavra era {}".format(palavra_secreta))
+    print("    _______________         ")
+    print("   /               \       ")
+    print("  /                 \      ")
+    print("//                   \/\  ")
+    print("\|   XXXX     XXXX   | /   ")
+    print(" |   XXXX     XXXX   |/     ")
+    print(" |   XXX       XXX   |      ")
+    print(" |                   |      ")
+    print(" \__      XXX      __/     ")
+    print("   |\     XXX     /|       ")
+    print("   | |           | |        ")
+    print("   | I I I I I I I |        ")
+    print("   |  I I I I I I  |        ")
+    print("   \_             _/       ")
+    print("     \_         _/         ")
+    print("       \_______/           ")
+
+def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
+    index = 0
+    for letra in palavra_secreta:
+        if (chute == letra):
+            letras_acertadas[index] = letra
+        index += 1
+
+def pede_chute():
+    chute = input("Qual letra? ")
+    chute = chute.strip().upper()
+    return chute
+
+def inicializa_letras_acertadas(palavra):
+    return ["_" for letra in palavra]
+
+def imprime_mensagem_abertura():
+    print("*********************************")
+    print("***Bem vindo ao jogo da Forca!***")
+    print("*********************************")
+
+def carrega_palavra_secreta():
+    arquivo = open("palavras.txt", "r")
+    palavras = []
+
+    for linha in arquivo:
+        linha = linha.strip()
+        palavras.append(linha)
+
+    arquivo.close()
+
+    numero = random.randrange(0, len(palavras))
+    palavra_secreta = palavras[numero].upper()
+    return palavra_secreta
+
+
+if(__name__ == "__main__"):
+    jogar()
+
+
+
+
+
+

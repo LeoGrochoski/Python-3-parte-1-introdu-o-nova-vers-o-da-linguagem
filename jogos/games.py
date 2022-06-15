@@ -14,4 +14,4 @@ if(game == 1):
     guessing_game.play()
 elif(game == 2):
     print("Playing The Hangman Game")
-    hangman_game.play()
+    jogo_forca.play()
